@@ -7,8 +7,9 @@ var EMAIL_PASSWORD = "somosheroes";
 //Imports
 var Firebase = require("firebase");
 var _ = require("underscore");
-var DISC = require("./DISC.js")();
 var nodemailer = require('nodemailer');
+var DISC = require("./DISC.js")();
+var http_server = require('./http_server.js');
 
 //Spawns
 var ref = new Firebase(FIREBASE_URL);
@@ -37,6 +38,8 @@ function main() {
 function start() {
     watchForTestChartUpdates();
     watchForNewTests();
+
+    http_server.start();
 }
 
 //Watchers

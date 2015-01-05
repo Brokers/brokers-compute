@@ -9,8 +9,8 @@ module.exports = function() {
         check_state();
 
         var answers_map = exports.test_chart.questions,
-            AdaptedBehaivorCount = {'D': 8, 'I': 7, 'S': 2, 'C': 2, 'B': 0},
-            NaturalBehaivorCount = {'D': 1, 'I': 1, 'S': 7, 'C': 6, 'B': 0};
+            AdaptedBehaivorCount = {'D': 0, 'I': 0, 'S': 0, 'C': 0, 'B': 0},
+            NaturalBehaivorCount = {'D': 0, 'I': 0, 'S': 0, 'C': 0, 'B': 0};
 
         _(answers).each(function(answer, question_id) {
             if(typeof answer != 'object') return;
