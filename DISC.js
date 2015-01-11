@@ -24,11 +24,10 @@ module.exports = function() {
             NaturalBehaivor = MapNaturalBehaivorCout(NaturalBehaivorCount);
 
         return {
-            'scores': AdaptedBehaivor,
             'adapted_behaivor': AdaptedBehaivor,
             'natural_behaivor': NaturalBehaivor,
 
-            'conclusion': 'Eres bueno para barrer calles.',
+            'conclusion': 'Nuestros expertos han recibido tu prueba, muy pronto te mandarán un PDF con tus resultados personalizados.',
         };
     };
 
@@ -77,7 +76,7 @@ module.exports = function() {
 
         return NaturalBehaivor;
     }
- 
+
     return exports;
 };
 
