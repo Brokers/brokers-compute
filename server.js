@@ -1,26 +1,23 @@
 //Constants
-var FIREBASE_URL = "https://brokers.firebaseio.com//";
+var FIREBASE_URL = "https://brokers.firebaseio.com/";
 var FIREBASE_SECRET = "pOpVeglX0R7saK1a9F4NYAbSPBARynHrleGeB2ms";
 var EMAIL = "brokers.inndutainment@gmail.com";
-var EMAIL_PASSWORD = "somosheroes";
+var SENDGRID_USER = "brokers";
+var SENDGRID_KEY = "somosheroes12";
+var FRONTEND_URL = "https://brokers.firebaseapp.com/";
 
 //Imports
 var Firebase = require("firebase");
 var _ = require("underscore");
-var nodemailer = require('nodemailer');
+var sendgrid  = require('sendgrid');
 var DISC = require("./DISC.js")();
 var http_server = require('./http_server.js');
 
 //Spawns
 var ref = new Firebase(FIREBASE_URL);
+var mailer = sendgrid(SENDGRID_USER, SENDGRID_KEY);
 
-var transporter = nodemailer.createTransport({
-    service: 'Gmail',
-    auth: {
-        user: EMAIL,
-        pass: EMAIL_PASSWORD
-    }
-});
+var admins = [];
 
 function main() {
     console.log("Starting Brokers compute server.");
@@ -37,6 +34,7 @@ function main() {
 
 function start() {
     watchForTestChartUpdates();
+    watchForAdmins()
     watchForNewTests();
 
     http_server.start();
@@ -52,10 +50,18 @@ function watchForTestChartUpdates() {
     });
 }
 
+function watchForAdmins() {
+    ref.child("admins").on("value", function(dataSnapshot) {
+        admins = dataSnapshot.val();
+
+        console.log("Admins list changed " + JSON.stringify(admins));
+    });
+}
+
 function watchForNewTests() {
     ref.child("tests").on("child_added", function(testSnapshot) {
         var test = testSnapshot.val();
-        
+
         console.log("New test " + JSON.stringify(test));
 
         if(test.stage != 'computed') {
@@ -76,9 +82,11 @@ function watchForTestToCompute(testRef) {
 
                 var results = DISC.calculateTest(answers);
                 console.log("Test Computed " + JSON.stringify(results));
-                
+
                 testRef.child("results").set(results);
                 ref.set("computed");
+
+                sendResultEmail(testRef);
             });
             ref.off("value", listener);
         }
@@ -87,25 +95,26 @@ function watchForTestToCompute(testRef) {
 
 //Operations
 function sendResultEmail(testRef) {
-    var content = 
+    var content =
         "Este es el resultado de tu prueba DISC: \n" +
-        'LINK' +
+        FRONTEND_URL + '#/test/' + testRef.key() + '/results'+
         " \nPuedes haceder a este link siempre que quieras ver tu resultado o puedes " +
         "entrar a la página e introducir el código de tu test.";
 
-    var mail = {
-        from: 'Brokers <'+EMAIL+'>',
-        to: 'bar@blurdybloop.com, baz@blurdybloop.com',
-        subject: 'Prueba DISC',
-        text: content,
-        html: content
-    };
+    var recipients = admins;
 
-    transporter.sendMail(mail, function(error, info){
+    var email     = new mailer.Email({
+        from: EMAIL,
+        to: recipients,
+        subject: 'Resultados DISC',
+        text: content,
+    });
+
+    mailer.send(email, function(error, info){
         if(error){
             console.error(error);
         } else {
-            console.log('Message sent: ' + info.response);
+            console.log('Message sent: ' + JSON.stringify(info));
         }
     });
 }
