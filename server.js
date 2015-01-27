@@ -34,7 +34,7 @@ function main() {
 
 function start() {
     watchForTestChartUpdates();
-    watchForAdmins()
+    watchForAdmins();
     watchForNewTests();
 
     http_server.start();

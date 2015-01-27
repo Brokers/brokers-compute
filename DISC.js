@@ -27,6 +27,9 @@ module.exports = function() {
             'adapted_behaivor': AdaptedBehaivor,
             'natural_behaivor': NaturalBehaivor,
 
+            'natural_profile': getSpetializedProfile(NaturalBehaivor),
+            'adapted_profile': getSpetializedProfile(AdaptedBehaivor),
+
             'conclusion': 'Nuestros expertos han recibido tu prueba, muy pronto te mandarán un PDF con tus resultados personalizados.',
         };
     };
@@ -75,6 +78,40 @@ module.exports = function() {
         };
 
         return NaturalBehaivor;
+    }
+
+    function getSpetializedProfile(NaturalBehaivor) {
+        var result = _(NaturalBehaivor).chain()
+            .pairs() // From {D: X, I: X, S: X, C: X} to [(D, X), (I, X), (S, X), (C, X)]
+            .sortBy(function(pair){
+                // Sorting from the strongest characteristic to the weakest.
+                return -pair[1];
+            })
+            .reduce(function(memo, pair) {
+                // Filtering the characteristics weaker than 50% and
+                // Concatenating the keys.
+                if(pair[1] < 50) return memo;
+                else return memo + pair[0];
+            }, '')
+            .value();
+        return result;
+    }
+
+    function getSpetializedProfile(NaturalBehaivor) {
+        var result = _(NaturalBehaivor).chain()
+            .pairs() // From {D: X, I: X, S: X, C: X} to [(D, X), (I, X), (S, X), (C, X)]
+            .sortBy(function(pair){
+                // Sorting from the strongest characteristic to the weakest.
+                return -pair[1];
+            })
+            .reduce(function(memo, pair) {
+                // Filtering the characteristics weaker than 50% and
+                // Concatenating the keys.
+                if(pair[1] < 50) return memo;
+                else return memo + pair[0];
+            }, '')
+            .value();
+        return result;
     }
 
     return exports;
