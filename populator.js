@@ -477,6 +477,82 @@ ref.update({
                 }
             },
         }
+    },
+
+    "report_information": {
+        "conducts": {
+            "D": {
+                "description": "Dominante, directo, exigente, decisivo",
+                "motivation": "Desafíos y control",
+                "desires": "Libertad de control, autoridad, actividades variadas, tareas difíciles, oportunidades para avanzar, alternativas, antes que ultimátum.",
+                "best_leader": "Provee respuestas directas, se apega a la tarea, va al grano, provee presión, permite libertad para los logros personales",
+                "to_learn": "Que necesita de la gente, que el relajarse no es un crimen, que se necesitan algunos controles, todo el mundo tiene un jefe, el dominio propio es de la mayor importancia, enfocarse en terminar bien es importante, es sabio ser sensible a los sentimientos de otros."
+                
+            },
+            "I": {
+                "description": "Dominante, directo, exigente, decisivo",
+                "motivation": "Desafíos y control",
+                "desires": "Libertad de control, autoridad, actividades variadas, tareas difíciles, oportunidades para avanzar, alternativas, antes que ultimátum.",
+                "best_leader": "Provee respuestas directas, se apega a la tarea, va al grano, provee presión, permite libertad para los logros personales",
+                "to_learn": "Que necesita de la gente, que el relajarse no es un crimen, que se necesitan algunos controles, todo el mundo tiene un jefe, el dominio propio es de la mayor importancia, enfocarse en terminar bien es importante, es sabio ser sensible a los sentimientos de otros."
+            },
+            "S": {
+                "description": "Dominante, directo, exigente, decisivo",
+                "motivation": "Desafíos y control",
+                "desires": "Libertad de control, autoridad, actividades variadas, tareas difíciles, oportunidades para avanzar, alternativas, antes que ultimátum.",
+                "best_leader": "Provee respuestas directas, se apega a la tarea, va al grano, provee presión, permite libertad para los logros personales",
+                "to_learn": "Que necesita de la gente, que el relajarse no es un crimen, que se necesitan algunos controles, todo el mundo tiene un jefe, el dominio propio es de la mayor importancia, enfocarse en terminar bien es importante, es sabio ser sensible a los sentimientos de otros."
+            },
+            "C": {
+                "description": "Dominante, directo, exigente, decisivo",
+                "motivation": "Desafíos y control",
+                "desires": "Libertad de control, autoridad, actividades variadas, tareas difíciles, oportunidades para avanzar, alternativas, antes que ultimátum.",
+                "best_leader": "Provee respuestas directas, se apega a la tarea, va al grano, provee presión, permite libertad para los logros personales",
+                "to_learn": "Que necesita de la gente, que el relajarse no es un crimen, que se necesitan algunos controles, todo el mundo tiene un jefe, el dominio propio es de la mayor importancia, enfocarse en terminar bien es importante, es sabio ser sensible a los sentimientos de otros."
+            }
+        },
+        "personalities": {
+            "D": {
+                "description": "Los “D” son dominantes y exigentes. No les importa tanto lo que la gente piense como que se haga el trabajo. Su insensibilidad a los sentimientos les hace demasiado fuertes. Son excelentes desarrolladores, pero necesitan mejorar su capacidad para hacer las cosas correctamente. Deben disciplinar su voluntad fuerte para prepararse y pensar más acertadamente en lo que están haciendo. Los motivan los serios retos para lograr las tareas.",
+                "reflexions": [
+                    "¿Cuán bien trabaja bajo autoridad? Explique.",
+                    "¿En qué manera afectan a sus decisiones los sentimientos de los demás?",
+                    "¿Se relaciona bien con la gente y  por qué si o no?",
+                    "¿Cómo resuelve conflictos con la gente?",
+                    "¿Cómo motiva a las  personas para  ser más productivos?",
+                    "¿Cuáles son sus planes a largo plazo?",
+                    "¿Qué piensa acerca de calidad versus  cantidad?",
+                    "¿En qué manera se guarda de personas dominantes?"
+                ],
+
+            },
+            "CS": {
+                "description": "Los “D” son dominantes y exigentes. No les importa tanto lo que la gente piense como que se haga el trabajo. Su insensibilidad a los sentimientos les hace demasiado fuertes. Son excelentes desarrolladores, pero necesitan mejorar su capacidad para hacer las cosas correctamente. Deben disciplinar su voluntad fuerte para prepararse y pensar más acertadamente en lo que están haciendo. Los motivan los serios retos para lograr las tareas.",
+                "reflexions": [
+                    "¿Cuán bien trabaja bajo autoridad? Explique.",
+                    "¿En qué manera afectan a sus decisiones los sentimientos de los demás?",
+                    "¿Se relaciona bien con la gente y  por qué si o no?",
+                    "¿Cómo resuelve conflictos con la gente?",
+                    "¿Cómo motiva a las  personas para  ser más productivos?",
+                    "¿Cuáles son sus planes a largo plazo?",
+                    "¿Qué piensa acerca de calidad versus  cantidad?",
+                    "¿En qué manera se guarda de personas dominantes?"
+                ]
+            },
+            "IDC": {
+                "description": "Los “D” son dominantes y exigentes. No les importa tanto lo que la gente piense como que se haga el trabajo. Su insensibilidad a los sentimientos les hace demasiado fuertes. Son excelentes desarrolladores, pero necesitan mejorar su capacidad para hacer las cosas correctamente. Deben disciplinar su voluntad fuerte para prepararse y pensar más acertadamente en lo que están haciendo. Los motivan los serios retos para lograr las tareas.",
+                "reflexions": [
+                    "¿Cuán bien trabaja bajo autoridad? Explique.",
+                    "¿En qué manera afectan a sus decisiones los sentimientos de los demás?",
+                    "¿Se relaciona bien con la gente y  por qué si o no?",
+                    "¿Cómo resuelve conflictos con la gente?",
+                    "¿Cómo motiva a las  personas para  ser más productivos?",
+                    "¿Cuáles son sus planes a largo plazo?",
+                    "¿Qué piensa acerca de calidad versus  cantidad?",
+                    "¿En qué manera se guarda de personas dominantes?"
+                ]
+            }
+        }
     }
 },
 function(error) {
