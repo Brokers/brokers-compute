@@ -2,8 +2,8 @@
 var FIREBASE_URL = "https://brokers.firebaseio.com/";
 var FIREBASE_SECRET = "pOpVeglX0R7saK1a9F4NYAbSPBARynHrleGeB2ms";
 var EMAIL = "brokers.inndutainment@gmail.com";
-var SENDGRID_USER = "brokers";
-var SENDGRID_KEY = "somosheroes12";
+var SENDGRID_USER = "brokers.inndutainment";
+var SENDGRID_KEY = "somosheroes1218";
 var FRONTEND_URL = "https://brokers.firebaseapp.com/";
 
 //Imports
