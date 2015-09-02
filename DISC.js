@@ -92,10 +92,13 @@ module.exports = function() {
             .reduce(function(memo, pair) {
                 // Filtering the characteristics weaker than 50% and
                 // Concatenating the keys.
-                if(pair[1] < 50) return memo;
-                else return memo + pair[0];
-            }, '')
-            .value();
+                if(pair[1] < 50 && memo.above50)
+                    return {'result': memo.result + '-' + pair[0], 'above50': false};
+                else
+                    return{'result': memo.result + pair[0], 'above50': memo.above50};
+            }, {'result': '', 'above50': true})
+            .value()
+            .result;
         return result;
     }
 
