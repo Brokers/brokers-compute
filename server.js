@@ -1,32 +1,25 @@
-//Constants
-var FIREBASE_URL = "https://brokers.firebaseio.com/";
-var FIREBASE_SECRET = "pOpVeglX0R7saK1a9F4NYAbSPBARynHrleGeB2ms";
-var EMAIL = "brokers.inndutainment@gmail.com";
-var SENDGRID_USER = "brokers.inndutainment";
-var SENDGRID_KEY = "somosheroes1218";
-var FRONTEND_URL = "https://brokers.firebaseapp.com/";
-
 //Imports
 var Firebase = require("firebase");
 var _ = require("underscore");
 var sendgrid  = require('sendgrid');
-var DISC = require("./DISC.js")();
-var http_server = require('./http_server.js');
+var settings  = require('./settings');
+var DISC = require("./DISC")();
+var http_server = require('./http_server');
 
 //Spawns
-var ref = new Firebase(FIREBASE_URL);
-var mailer = sendgrid(SENDGRID_USER, SENDGRID_KEY);
+var ref = new Firebase(settings.FIREBASE_URL);
+var mailer = sendgrid(settings.SENDGRID_USER, settings.SENDGRID_KEY);
 
 var admins = [];
 
 function main() {
     console.log("Starting Brokers compute server.");
 
-    ref.authWithCustomToken(FIREBASE_SECRET, function(error, authData) {
+    ref.authWithCustomToken(settings.FIREBASE_SECRET, function(error, authData) {
       if (error) {
         console.error("Login Failed!", error);
       } else {
-        console.log("Authenticated successfully with payload:", authData);
+        console.log("Authenticated successfully to Firebase.");
         start();
       }
     });
@@ -46,7 +39,7 @@ function watchForTestChartUpdates() {
     ref.child("test_chart").on("value", function(dataSnapshot) {
         DISC.test_chart = dataSnapshot.val();
 
-        console.log("Test Chart changed " + JSON.stringify(DISC.test_chart));
+        console.log("Test Chart received.");
     });
 }
 
@@ -54,7 +47,7 @@ function watchForAdmins() {
     ref.child("admins").on("value", function(dataSnapshot) {
         admins = dataSnapshot.val();
 
-        console.log("Admins list changed " + JSON.stringify(admins));
+        console.log("Admins list received.");
     });
 }
 
@@ -62,7 +55,7 @@ function watchForNewTests() {
     ref.child("tests").on("child_added", function(testSnapshot) {
         var test = testSnapshot.val();
 
-        console.log("New test " + JSON.stringify(test));
+        console.log("Test received " + JSON.stringify(testSnapshot.key()));
 
         if(test.stage != 'computed') {
             watchForTestToCompute(testSnapshot.ref());
@@ -97,14 +90,14 @@ function watchForTestToCompute(testRef) {
 function sendResultEmail(testRef) {
     var content =
         "Este es el resultado de tu prueba DISC: \n" +
-        FRONTEND_URL + '#/test/' + testRef.key() + '/results'+
+        settings.FRONTEND_URL + '#/test/' + testRef.key() + '/results'+
         " \nPuedes haceder a este link siempre que quieras ver tu resultado o puedes " +
         "entrar a la página e introducir el código de tu test.";
 
     var recipients = admins;
 
     var email     = new mailer.Email({
-        from: EMAIL,
+        from: settings.EMAIL,
         to: recipients,
         subject: 'Resultados DISC',
         text: content,
