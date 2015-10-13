@@ -1,15 +1,24 @@
-var http = require("http");
+var express = require('express');
+var app = express();
+var PORT = Number(process.env.PORT) || 5000;
 
-module.exports.port = process.env.PORT || 5000;
+var PDFReportControllers = require('./pdf_report/controllers.js');
 
-module.exports.server = http.createServer(function(request,response){
-    response.writeHeader(200, {"Content-Type": "text/plain"});  
-    response.write("I'm awake.");  
-    response.end();
-    console.log("Awaker request.");
+app.get('/', function(req, res) {
+    res.status(200).send("I'm awake.");
 });
 
-module.exports.start = function() {
-    module.exports.server.listen(module.exports.port);
-    console.log("Server Running on " + module.exports.port);
+app.get('/pdf_report/:testId', PDFReportControllers.generateReport);
+
+var start = function() {
+    module.exports.server = app.listen(PORT, function () {
+        var host = module.exports.server.address().address;
+        var port = module.exports.server.address().port;
+
+        console.log('Server running at http://%s:%s', host, port);
+    });
 };
+
+module.exports.port = PORT;
+module.exports.app = app;
+module.exports.start = start;

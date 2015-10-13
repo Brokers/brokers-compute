@@ -1,0 +1,279 @@
+<html>
+<head>
+    <meta charset="utf8">
+    <title>Informe Personalizado</title>
+    <style>
+        /* General */
+
+        /* PhantomJS Doesn't support webfonts */
+/*        @font-face {
+            font-family: 'BebasNeueRegular';
+            src: url('{{base_folder}}/fonts/bebasneue_regular-webfont.eot');
+            src: url('{{base_folder}}/fonts/bebasneue_regular-webfont.eot?#iefix') format('embedded-opentype'),
+                 url('{{base_folder}}/fonts/bebasneue_regular-webfont.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+*/
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+
+            font-weight: 500;
+            font-size: 10px;
+            background: white;
+            color: black;
+            -webkit-print-color-adjust: exact;
+            box-sizing: border-box;
+        }
+
+        .page {
+            position: relative;
+            height: 279.4mm;
+            width: 215.9mm;
+            display: block;
+            background: white;
+            page-break-after: auto;
+            margin: 50px;
+            overflow: hidden;
+            border: solid black 1px;
+        }
+
+        @media print {
+            body {}
+            .page {
+                border: none;
+                margin: 0;
+                height: 100%;
+                width: 100%;
+            }
+        }
+
+        /* Pages */
+
+        /* Cover */
+        #cover {}
+
+        #cover .super-title {
+            background-color: rgb(48, 58, 72);
+            text-transform: uppercase;
+            position: absolute;
+            /*font-family: 'BebasNeueRegular', Arial, sans-serif;*/
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            color: white;
+            margin: 0;
+            font-size: 62px;
+            font-weight: 500;
+            padding: 13px 0px 2px 30px;
+        }
+
+        #cover .super-title img {
+            height: 45px;
+        }
+
+        #cover .top-decoration {
+            background-image: url('{{base_folder}}/images/top-decoration.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            height: 45px;
+            position: absolute;
+            top: 84px;
+            right: 0;
+            left: 0;
+        }
+
+        #cover .title {
+            /*font-family: 'BebasNeueRegular', Arial, sans-serif;*/
+            position: absolute;
+            text-align: center;
+            top: 165px;
+            right: 0;
+            left: 0;
+            font-size: 150px;
+            margin: 0;
+            padding: 0;
+        }
+
+        #cover .title img {
+            height: 110px;
+        }
+
+/*
+        #cover .title > span {
+            margin-right: -5px;
+            margin-left: -5px;
+        }
+
+        #cover .title .D { color: rgb(238, 48, 45); }
+        #cover .title .I { color: rgb(135, 199, 99); }
+        #cover .title .S { color: rgb(29, 174, 229); }
+        #cover .title .C { color: rgb(101, 68, 155); }
+*/
+
+        #cover .disc-logo {
+            position: absolute;
+            top: 400px;
+            right: 37%;
+            left: 37%;
+            color: rgb(72, 75, 75);
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        #cover .disc-logo img {
+            width: 100%;
+        }
+
+        #cover .disc-logo .open {
+            position: absolute;
+            top: -41px;
+            right: 70px;
+        }
+
+        #cover .disc-logo .people {
+            position: absolute;
+            top: 87px;
+            right: -98px;
+        }
+
+        #cover .disc-logo .reserved {
+            position: absolute;
+            top: 231px;
+            right: 56px;
+        }
+
+        #cover .disc-logo .task {
+            position: absolute;
+            top: 87px;
+            right: 229px;
+        }
+
+        #cover .subject {
+            position: absolute;
+            right: 0;
+            left: 43%;
+            top: 711px;
+            color: rgb(72, 75, 75);
+        }
+
+        #cover .subject .label {
+            display: block;
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 15px;
+        }
+
+        #cover .subject .value {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        #cover .subject .decoration {
+            position: absolute;
+            bottom: -10;
+            right: 0;
+            left: 0;
+            height: 7px;
+            background-color: rgb(220, 191, 72);
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 15px;
+            right: 0;
+            left: 0;
+            height: 7px;
+            background-color: rgb(200, 202, 203);
+            color: rgb(200, 202, 203);
+            font-weight: 100;
+        }
+
+        .footer .text {
+            position: relative;
+            left: 50%;
+            bottom: 7px;
+            margin-left: -170px;
+            padding: 20px;
+            font-size: 16px;
+            background-color: white;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- <Cover page> -->
+<div id="cover" class="page">
+    
+    <h1 class="super-title">
+        <!-- informe personalizado -->
+        <img src="{{base_folder}}/images/super-title.png">
+    </h1>
+
+    <div class="top-decoration"></div>
+
+    <h2 class="title">
+        <!-- <span class="D">D</span>
+        <span class="I">I</span>
+        <span class="S">S</span>
+        <span class="C">C</span> -->
+        <img src="{{base_folder}}/images/title.png">
+    </h2>
+
+    <div class="disc-logo">
+        <img src="{{base_folder}}/images/disc.png">
+        <div>
+            <span class="open">Abierto</span>
+            <span class="people">Personas</span>
+            <span class="reserved">Reservado</span>
+            <span class="task">Tarea</span>
+        </div>
+    </div>
+
+    <div class="subject">
+        <span class="label">
+            Nombre:
+        </span>
+        <span class="value">
+            {{fullname}}
+        </span>
+
+        <span class="label">
+            Conducta Principal:
+        </span>
+        <span class="value">
+            {{main-conduct-title}}
+        </span>
+
+        <span class="label">
+            Conducta Secundaria:
+        </span>
+        <span class="value">
+            {{secondary-conduct-title}}
+        </span>
+
+        <div class="decoration"></div>
+    </div>
+
+    <div class="footer">
+        <span class="text">
+            Prohibida su reprodicción sin autorización
+        </span>
+    </div>
+
+</div>
+<!-- </Cover page> -->
+
+<!-- <div class="page">
+    
+</div> -->
+
+
+
+</body>
+</html>
