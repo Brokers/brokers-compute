@@ -6,7 +6,8 @@
         /* General */
 
         /* PhantomJS Doesn't support webfonts */
-/*        @font-face {
+        /*      
+        @font-face {
             font-family: 'BebasNeueRegular';
             src: url('{{base_folder}}/fonts/bebasneue_regular-webfont.eot');
             src: url('{{base_folder}}/fonts/bebasneue_regular-webfont.eot?#iefix') format('embedded-opentype'),
@@ -14,23 +15,21 @@
             font-weight: normal;
             font-style: normal;
         }
-*/
+        */
+
         html, body {
             margin: 0;
             padding: 0;
-            font-family: sans-serif;
-
-            font-weight: 500;
-            font-size: 10px;
+            font-family: Arial, sans-serif;
             background: white;
-            color: black;
+            color: rgb(72, 75, 75);
             -webkit-print-color-adjust: exact;
             box-sizing: border-box;
         }
 
         .page {
             position: relative;
-            height: 279.4mm;
+            height: 262mm;
             width: 215.9mm;
             display: block;
             background: white;
@@ -45,14 +44,36 @@
             .page {
                 border: none;
                 margin: 0;
-                height: 100%;
+                /*height: 100%;*/
                 width: 100%;
             }
         }
 
+        .footer {
+            position: absolute;
+            /*bottom: 15px;*/
+            top: 960px;
+            right: 0;
+            left: 0;
+            height: 7px;
+            background-color: rgb(200, 202, 203);
+            font-weight: 100;
+        }
+
+        .footer .text {
+            position: absolute;
+            color: rgb(200, 202, 203);
+            left: 50%;
+            top: -25px;
+            margin-left: -170px;
+            padding: 20px;
+            font-size: 16px;
+            background-color: white;
+        }
+
         /* Pages */
 
-        /* Cover */
+/* <Cover> */
         #cover {}
 
         #cover .super-title {
@@ -102,7 +123,7 @@
             height: 110px;
         }
 
-/*
+        /*
         #cover .title > span {
             margin-right: -5px;
             margin-left: -5px;
@@ -112,7 +133,7 @@
         #cover .title .I { color: rgb(135, 199, 99); }
         #cover .title .S { color: rgb(29, 174, 229); }
         #cover .title .C { color: rgb(101, 68, 155); }
-*/
+        */
 
         #cover .disc-logo {
             position: absolute;
@@ -181,33 +202,157 @@
             height: 7px;
             background-color: rgb(220, 191, 72);
         }
+/* </Cover> */
 
-        .footer {
+/* <Conducts> */
+        .conducts {}
+
+        .conducts .page-decoration, #personalities .page-decoration {
+            background-image: url('{{base_folder}}/images/page-decoration.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            height: 10px;
             position: absolute;
-            bottom: 15px;
+            top: 10px;
             right: 0;
             left: 0;
-            height: 7px;
-            background-color: rgb(200, 202, 203);
-            color: rgb(200, 202, 203);
-            font-weight: 100;
         }
 
-        .footer .text {
-            position: relative;
-            left: 50%;
-            bottom: 7px;
-            margin-left: -170px;
-            padding: 20px;
-            font-size: 16px;
-            background-color: white;
+        .conducts .help {
+            position: absolute;
+            top: 105px;
+            left: 0;
+            right: 90px;
+            background-color: rgb(226, 201, 96);
+            padding: 0px 20px 5px 170px;
+            font-size: 15px;
+            text-align: justify;
         }
+
+        #conducts1 .help {
+            top: 105px;
+            left: 0;
+            right: 90px;
+            padding: 0px 20px 5px 170px;
+        }
+
+        #conducts2 .help {
+            top: 670px;
+            right: 0;
+            left: 90px;
+            padding: 0px 170px 5px 30px;
+        }
+
+        .conducts .content {
+            position: absolute;
+            right: 0;
+            left: 90px;
+        }
+
+        #conducts1 .content {
+            top: 440px;
+        }
+
+        #conducts2 .content {
+            top: 80px;
+        }
+
+        .conducts .content .title {
+            position: absolute;
+            top: 7px;
+            font-size: 32px;
+            font-weight: bold;
+            text-transform: uppercase;
+            width: 190px;
+            text-align: left;
+        }
+
+        #conducts1 .content .title {
+            color: {{main-conduct-color}};
+            /*color: rgb(125, 166, 72);*/
+        }
+
+        #conducts2 .content .title {
+            color: {{secondary-conduct-color}};
+            /*color: rgb(125, 166, 72);*/
+        }
+
+        .conducts .content .conduct-letter {
+            position: absolute;
+            left: 190px;
+            top: -5px;
+            height: 56px;
+            padding: 0px;
+            z-index: 1;
+            background: white;
+            border-radius: 50%;
+        }
+
+        .conducts .content .conduct-title {
+            position: absolute;
+            right: 0;
+            left: 233px;
+            top: 12px;
+            font-size: 17px;
+            text-align: center;
+            padding: 2px;
+            padding-left: 20px;
+            padding-right: 5px;
+            color: white;
+        }
+
+        #conducts1 .content .conduct-title {
+            background-color: {{main-conduct-color}};
+            /*background-color: rgb(125, 166, 72);*/
+        }
+
+        #conducts2 .content .conduct-title {
+            background-color: {{secondary-conduct-color}};
+            /*background-color: rgb(125, 166, 72);*/
+        }
+
+        .conducts .content .information {
+            position: absolute;
+            right: 25px;
+            width: 425px;
+            top: 65px;
+        }
+
+        .conducts .content .information .entry {
+            font-size: 16px;
+        }
+
+        .conducts .content .information .entry .key {
+            position: relative;
+            font-weight: bold;
+        }
+        .conducts .content .information .entry .key::before {
+            position: absolute;
+            top: 0px;
+            left: -12px;
+            background-image: url('{{base_folder}}/images/tiny-mark.png');
+            /*background-image: url('images/tiny-mark.png');*/
+            background-size: contain;
+            background-repeat: no-repeat;
+            content: "";
+            width: 20px;
+            height: 16px;
+        }
+
+        .conducts .content .information .entry .value {
+            text-align: justify;
+            margin-top: 5px;
+        }
+/* </Conducts> */
+
+/* <Personalities> */
+
+/* </Personalities> */
 
     </style>
 </head>
 <body>
 
-<!-- <Cover page> -->
 <div id="cover" class="page">
     
     <h1 class="super-title">
@@ -265,14 +410,162 @@
             Prohibida su reprodicción sin autorización
         </span>
     </div>
-
 </div>
-<!-- </Cover page> -->
 
-<!-- <div class="page">
-    
-</div> -->
+<div id="conducts1" class="page conducts">
+    <div class="page-decoration"></div>
 
+    <div class="help">
+        <p>
+            Hay cuatro tipos básicos de personalidad, conocidos como conducta D, I, S y C. Toda persona es una mezcla o combinación de estos cuatro temperamentos y por eso ningón tipo es mejor que otro. El factor más importante es que hace usted con su personalidad. No deje que su personalidad lo controle; más bien aprenda cómo controlar su personalidad.
+        </p>
+        <p>
+            A continuación usted conocerá un grupo general que se acerca a su personalidad, principal y secundario.
+        </p>
+    </div>
+
+
+    <div class="content">
+        <span class="title">
+            Conducta principal
+        </span>
+        <img class="conduct-letter"
+            src="{{base_folder}}/images/conduct-letter-{{main-conduct-letter}}.png"
+            >
+        <span class="conduct-title">
+            {{main-conduct-title}}
+        </span>
+
+        <div class="information">
+            <div class="entry">
+                <span class="key">Descripciones:</span>
+                <p class="value">
+                    {{main-conduct-description}}
+                </p>
+            </div>
+            
+            <div class="entry">
+                <span class="key">Motivación básica:</span>
+                <p class="value">
+                    {{main-conduct-motivation}}
+                </p>
+            </div>
+
+            <div class="entry">
+                <span class="key">Deseos:</span>
+                <p class="value">
+                    {{main-conduct-desires}}
+                </p>
+            </div>
+
+            <div class="entry">
+                <span class="key">Responde mejor al líder que:</span>
+                <p class="value">
+                    {{main-conduct-best_leader}}
+                </p>
+            </div>
+
+            <div class="entry">
+                <span class="key">Necesita aprender:</span>
+                <p class="value">
+                    {{main-conduct-to_learn}}
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="footer">
+        <span class="text">
+            Prohibida su reprodicción sin autorización
+        </span>
+    </div>
+</div>
+
+<div id="conducts2" class="page conducts">
+    <div class="page-decoration"></div>
+
+    <div class="help">
+        <p>
+            Este TEST también le permite apreciar, las dos siguientes facetas de su personalidad:
+        </p>
+
+        <p>
+            “ESTE SOY YO”: es su respuesta a cómo se siente y piensa bajo presión; cómo se siente y realmente piensa por dentro.
+        </p>
+            
+        <p>
+            “ESTO SE ESPERA DE MÍ”: es su respuesta a la manera en cómo usted piensa que la gente espera que se conduzca, es su personalidad protegida y enmascarada.
+        </p>
+    </div>
+
+
+    <div class="content">
+        <span class="title">
+            Conducta <span style="font-size:28px">secundaria</span>
+        </span>
+        <img class="conduct-letter"
+            src="{{base_folder}}/images/conduct-letter-{{secondary-conduct-letter}}.png"
+            >
+        <span class="conduct-title">
+            {{secondary-conduct-title}}
+        </span>
+
+        <div class="information">
+            <div class="entry">
+                <span class="key">Descripciones:</span>
+                <p class="value">
+                    {{secondary-conduct-description}}
+                </p>
+            </div>
+            
+            <div class="entry">
+                <span class="key">Motivación básica:</span>
+                <p class="value">
+                    {{secondary-conduct-motivation}}
+                </p>
+            </div>
+
+            <div class="entry">
+                <span class="key">Deseos:</span>
+                <p class="value">
+                    {{secondary-conduct-desires}}
+                </p>
+            </div>
+
+            <div class="entry">
+                <span class="key">Responde mejor al líder que:</span>
+                <p class="value">
+                    {{secondary-conduct-best_leader}}
+                </p>
+            </div>
+
+            <div class="entry">
+                <span class="key">Necesita aprender:</span>
+                <p class="value">
+                    {{secondary-conduct-to_learn}}
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="footer">
+        <span class="text">
+            Prohibida su reprodicción sin autorización
+        </span>
+    </div>
+</div>
+
+<div id="personalities" class="page">
+    <div class="page-decoration"></div>
+
+    <div class="footer">
+        <span class="text">
+            Prohibida su reprodicción sin autorización
+        </span>
+    </div>
+</div>
 
 
 </body>
