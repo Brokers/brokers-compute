@@ -71,6 +71,16 @@
             background-color: white;
         }
 
+        .page-decoration {
+            background-image: url('{{base_folder}}/images/page-decoration.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            height: 10px;
+            position: absolute;
+            top: 10px;
+            right: 0;
+            left: 0;
+        }
         /* Pages */
 
 /* <Cover> */
@@ -207,17 +217,6 @@
 /* <Conducts> */
         .conducts {}
 
-        .conducts .page-decoration, #personalities .page-decoration {
-            background-image: url('{{base_folder}}/images/page-decoration.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            height: 10px;
-            position: absolute;
-            top: 10px;
-            right: 0;
-            left: 0;
-        }
-
         .conducts .help {
             position: absolute;
             top: 105px;
@@ -346,6 +345,97 @@
 /* </Conducts> */
 
 /* <Personalities> */
+        .personalities {}
+
+        .personalities .description .title {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            padding: 23px 0;
+            font-size: 34px;
+            color: white;
+            background-color: rgb(48, 58, 72);
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .personalities .description .title img {
+            width: 700px;
+            margin: auto;
+            margin-top: -4px;
+        }
+
+        .personalities .reflexions .title {
+            position: absolute;
+            top: 435px;
+            right: 0;
+            left: 0;
+            padding: 12px 40px;
+            font-size: 34px;
+            color: white;
+            background-color: rgb(48, 58, 72);
+            text-transform: uppercase;
+            text-align: left;
+        }
+
+        .personalities .reflexions .title img {
+            height: 30px;
+            margin: auto;
+        }
+
+        .personalities .page-decoration {
+            top: 95px;
+        }
+
+        .personalities .content {
+            position: absolute;
+            right: 0;
+            left: 90px;
+        }
+
+        .description .content {
+            top: 150px;
+        }
+
+        .reflexions .content {
+            top: 535px;
+        }
+
+        .personalities .content .subtitle {
+
+        }
+
+        .personalities .content .subtitle .personality-code {
+            position: absolute;
+            top: -7px;
+            left: -35px;
+            font-family: serif;
+            border: 2px solid rgb(219, 191, 78);
+            display: inline-block;
+            height: 32px;
+            width: 45px;
+            padding-top: 13px;
+            text-align: center;
+            border-radius: 50%;
+            background-color: white;
+            z-index: 1;
+        }
+
+        .personalities .content .subtitle .personality-title {
+            display: inline-block;
+            border-bottom: 2px solid rgb(219, 191, 78);
+            width: 100%;
+            padding: 0 20px;
+            font-weight: bold;
+            font-style: 16px;
+            text-transform: uppercase;
+        }
+
+        .personalities .content .text {
+            padding: 30px 170px 0px 25px;
+            text-align: justify;
+        }
 
 /* </Personalities> */
 
@@ -557,8 +647,103 @@
     </div>
 </div>
 
-<div id="personalities" class="page">
+<div id="personalities1" class="page personalities">
     <div class="page-decoration"></div>
+
+    <div class="description">
+        <div class="title">
+            <img src="{{base_folder}}/images/personalities-1-description.png">
+        </div>
+
+        <div class="content">
+            <div class="subtitle">
+                <div class="personality-code">
+                    {{natural-profile-code}}
+                </div>
+                <div class="personality-title">
+                    {{natural-profile-name}}
+                </div>
+            </div>
+
+            <div class="text">
+                {{natural-profile-description}}
+            </div>
+        </div>
+    </div>
+
+    <div class="reflexions">
+        <div class="title">
+            <img src="{{base_folder}}/images/personalities-reflexions.png">
+        </div>
+
+        <div class="content">
+            <div class="subtitle">
+                <div class="personality-code">
+                    {{natural-profile-code}}
+                </div>
+                <div class="personality-title">
+                    {{natural-profile-name}}
+                </div>
+            </div>
+
+            <div class="text">
+                {{natural-profile-reflexions}}
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <span class="text">
+            Prohibida su reprodicción sin autorización
+        </span>
+    </div>
+</div>
+
+
+<div id="personalities2" class="page personalities">
+    <div class="page-decoration"></div>
+
+    <div class="description">
+        <div class="title">
+            <img src="{{base_folder}}/images/personalities-2-description.png">
+        </div>
+
+        <div class="content">
+            <div class="subtitle">
+                <div class="personality-code">
+                    {{adapted-profile-code}}
+                </div>
+                <div class="personality-title">
+                    {{adapted-profile-name}}
+                </div>
+            </div>
+
+            <div class="text">
+                {{adapted-profile-description}}
+            </div>
+        </div>
+    </div>
+
+    <div class="reflexions">
+        <div class="title">
+            <img src="{{base_folder}}/images/personalities-reflexions.png">
+        </div>
+
+        <div class="content">
+            <div class="subtitle">
+                <div class="personality-code">
+                    {{adapted-profile-code}}
+                </div>
+                <div class="personality-title">
+                    {{adapted-profile-name}}
+                </div>
+            </div>
+
+            <div class="text">
+                {{adapted-profile-reflexions}}
+            </div>
+        </div>
+    </div>
 
     <div class="footer">
         <span class="text">

@@ -40,6 +40,10 @@ function getValuePromise(path) {
     });
 }
 
+function reflexionsTemplate(reflexions) {
+    return '</p><p>' + reflexions.join('</p><p>') + '</p><p>';
+}
+
 module.exports = {
     generateReport: function (req, res) {
         var templatePath = path.join(__dirname, 'report.html');
@@ -79,6 +83,24 @@ module.exports = {
             var naturalProfile = naturalProfileSs.val();
             var adaptedProfile = adaptedProfileSs.val();
 
+            if(!naturalProfile) {
+                naturalProfile = {
+                    'name': 'No encontrado',
+                    'description': 'No encontrado',
+                    'reflexions': ['No encontrado'],
+                };
+            }
+            naturalProfile.code = results.natural_profile.split('').join('/');
+
+            if(!adaptedProfile) {
+                adaptedProfile = {
+                    'name': 'No encontrado',
+                    'description': 'No encontrado',
+                    'reflexions': ['No encontrado'],
+                };
+            }
+            adaptedProfile.code = results.adapted_profile.split('').join('/');
+
             var mainConductColor = conductColors[results.conducts[0]];
             var secondaryConductColor = conductColors[results.conducts[1]];
 
@@ -103,6 +125,16 @@ module.exports = {
                 "{{secondary-conduct-desires}}": secondaryConduct['desires'],
                 "{{secondary-conduct-motivation}}": secondaryConduct['motivation'],
                 "{{secondary-conduct-to_learn}}": secondaryConduct['to_learn'],
+
+                "{{natural-profile-description}}": naturalProfile['description'],
+                "{{natural-profile-name}}": naturalProfile['name'],
+                "{{natural-profile-code}}": naturalProfile.code,
+                "{{natural-profile-reflexions}}": reflexionsTemplate(naturalProfile['reflexions']),
+
+                "{{adapted-profile-description}}": adaptedProfile['description'],
+                "{{adapted-profile-name}}": adaptedProfile['name'],
+                "{{adapted-profile-code}}": adaptedProfile.code,
+                "{{adapted-profile-reflexions}}": reflexionsTemplate(adaptedProfile['reflexions']),
             };
 
             _(context).each(function(value, key) {
